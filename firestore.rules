@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Private single-tenant bot: only this server (using its own Firebase
+    // config/API key) ever talks to this database — there is no public
+    // client app reading/writing it — so open read/write is fine here.
+    // Do NOT reuse this rule for a project with a real public-facing client.
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

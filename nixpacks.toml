@@ -1,0 +1,4 @@
+# Ensures ffmpeg is present on Railway (needed for converting TTS voice
+# replies into WhatsApp-playable OGG/Opus voice notes).
+[phases.setup]
+nixPkgs = ["...", "ffmpeg"]
